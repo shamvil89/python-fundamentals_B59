@@ -39,7 +39,7 @@ jobs:
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
       # git push  https://kaz-tec:$azureDevOpsPat@$azureDevOpsRepoUrl
-      echo $azureDevOpsPat
+      
 
       cd ..
       Remove-Item -Recurse -Force github-repo
