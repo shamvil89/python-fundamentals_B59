@@ -9,7 +9,7 @@ jobs:
   pool: Default
   variables:
     - group: VG120
-    - name: pat
+    - name: pats
       value: $[variables.pat]
 
   steps:
@@ -49,5 +49,5 @@ jobs:
     env:
       GITHUB_REPO_URL: "https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit.git"
       AZURE_DEVOPS_REPO_URL: "dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject.git"
-      AZURE_DEVOPS_PAT: $(pat)
+      AZURE_DEVOPS_PAT: $(pats)
     workingDirectory: $(Agent.BuildDirectory)
