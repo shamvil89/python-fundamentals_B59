@@ -20,12 +20,13 @@ jobs:
       $githubRepoUrl = $env:GITHUB_REPO_URL
       $azureDevOpsRepoUrl = $env:AZURE_DEVOPS_REPO_URL
       $azureDevOpsPat = $env:AZURE_DEVOPS_PAT
+      $azureDevopsFullUrl = https://$azureDevOpsPat@$azureDevOpsRepoUrl
 
       
 
       # Clone GitHub repository (no authentication needed for public repositories)
-      git clone --mirror $githubRepoUrl github-repo
-      cd github-repo
+      #git clone --mirror $githubRepoUrl github-repo
+      #cd github-repo
 
       # Configure Git to use the provided Azure DevOps PAT for authentication
       git config --global user.email "shamvilkazmi@gmail.com"
@@ -33,14 +34,15 @@ jobs:
       git config --global credential.useHttpPath true  # Set credential configuration
 
       # Add Azure DevOps repository as a remote
-      git remote add azuredevops $azureDevOpsRepoUrl
+      git remote add azuredevops $azureDevopsFullUrl
 
       # Fetch changes from GitHub
       git fetch --all
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      git push  https://$azureDevOpsPat@$azureDevOpsRepoUrl
+      #git push  
+      echo $azureDevopsFullUrl
       
 
       cd ..
