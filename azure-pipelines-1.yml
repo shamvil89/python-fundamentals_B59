@@ -20,7 +20,7 @@ jobs:
       $githubRepoUrl = $env:GITHUB_REPO_URL
       $azureDevOpsRepoUrl = $env:AZURE_DEVOPS_REPO_URL
       $azureDevOpsPat = $env:AZURE_DEVOPS_PAT
-      $azureDevopsFullUrl = 'https://'$azureDevOpsPat'@'$azureDevOpsRepoUrl
+      $azureDevopsFullUrl = 'https://'+$azureDevOpsPat+'@'+$azureDevOpsRepoUrl
 
       
 
