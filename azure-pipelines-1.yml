@@ -46,6 +46,6 @@ jobs:
     displayName: 'Sync GitHub to Azure DevOps'
     env:
       GITHUB_REPO_URL: "https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit.git"
-      AZURE_DEVOPS_REPO_URL: "dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject"
+      AZURE_DEVOPS_REPO_URL: "dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject.git"
       AZURE_DEVOPS_PAT: $(pat)
     workingDirectory: $(Agent.BuildDirectory)
