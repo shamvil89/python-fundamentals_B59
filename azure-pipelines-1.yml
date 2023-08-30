@@ -1,13 +1,45 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+- '*'
 
-pool: Default
+pr:
+- '*'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+- job: SyncGitHubToAzureDevOps
+  pool: Default
+
+  steps:
+  - checkout: self
+
+  - powershell: |
+      # Set environment variables
+      $githubRepoUrl = $env:GITHUB_REPO_URL
+      $azureDevOpsRepoUrl = $env:AZURE_DEVOPS_REPO_URL
+      $azureDevOpsPat = $env:AZURE_DEVOPS_PAT
+
+      # Clone GitHub repository (no authentication needed for public repositories)
+      git clone --mirror $githubRepoUrl github-repo
+      cd github-repo
+
+      # Configure Git to use the provided Azure DevOps PAT for authentication
+      git config --global user.email "shamvilkazmi@gmail.com"
+      git config --global user.name "shamvilkazmi"
+      git config --global credential.useHttpPath true  # Set credential configuration
+
+      # Add Azure DevOps repository as a remote
+      git remote add azuredevops $azureDevOpsRepoUrl
+
+      # Fetch changes from GitHub
+      git fetch --all
+
+
+      # Push changes to Azure DevOps using the Azure DevOps username and PAT
+      git push  https://shamvilkazmi:3qr4ntchuvucjyctxg5thmznuzi74pbeng45f5xdga4oojqlstbq@dev.azure.com/kaz-tec/myfirstproject/_git/python-fundamentals_B79.git
+      
+
+      cd ..
+      Remove-Item -Recurse -Force github-repo
+    displayName: 'Sync GitHub to Azure DevOps'
+    env:
+      GITHUB_REPO_URL: "https://github.com/shamvil89/python-fundamentals_B79.git"
+    workingDirectory: $(Agent.BuildDirectory)
