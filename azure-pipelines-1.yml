@@ -6,7 +6,8 @@ pr:
 
 jobs:
 - job: SyncGitHubToAzureDevOps
-  pool: Default
+pool:
+  vmImage: ubuntu-latest
   variables:
     - group: VG120
     - name: pats
