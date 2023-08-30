@@ -7,6 +7,10 @@ pr:
 jobs:
 - job: SyncGitHubToAzureDevOps
   pool: Default
+  variables:
+    group:
+      name: pat
+      value: $[VG120.pat]
 
   steps:
   - checkout: self
@@ -34,7 +38,7 @@ jobs:
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      git push  https://shamvilkazmi:kjqr3sphfdtmjy6hi3fdrgwqmguukqogzkyxy6ubtei6i2koagea@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject
+      git push  https://shamvilkazmi:$(pat)@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject
       
 
       cd ..
