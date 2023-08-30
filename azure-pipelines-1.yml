@@ -21,6 +21,8 @@ jobs:
       $azureDevOpsRepoUrl = $env:AZURE_DEVOPS_REPO_URL
       $azureDevOpsPat = $env:AZURE_DEVOPS_PAT
 
+      
+
       # Clone GitHub repository (no authentication needed for public repositories)
       git clone --mirror $githubRepoUrl github-repo
       cd github-repo
@@ -38,7 +40,7 @@ jobs:
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      # git push  https://shamvilkazmi:$azureDevOpsPat$azureDevOpsRepoUrl
+      git push  https://$azureDevOpsPat@$azureDevOpsRepoUrl
       
 
       cd ..
@@ -46,6 +48,6 @@ jobs:
     displayName: 'Sync GitHub to Azure DevOps'
     env:
       GITHUB_REPO_URL: "https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit.git"
-      AZURE_DEVOPS_REPO_URL: "@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject.git"
+      AZURE_DEVOPS_REPO_URL: "dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject.git"
       AZURE_DEVOPS_PAT: $(pat)
     workingDirectory: $(Agent.BuildDirectory)
