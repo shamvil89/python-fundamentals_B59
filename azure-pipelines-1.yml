@@ -34,12 +34,12 @@ jobs:
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      git push  https://shamvilkazmi:3qr4ntchuvucjyctxg5thmznuzi74pbeng45f5xdga4oojqlstbq@dev.azure.com/kaz-tec/myfirstproject/_git/python-fundamentals_B79.git
+      git push  https://kaz-tec:3qr4ntchuvucjyctxg5thmznuzi74pbeng45f5xdga4oojqlstbq@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject
       
 
       cd ..
       Remove-Item -Recurse -Force github-repo
     displayName: 'Sync GitHub to Azure DevOps'
     env:
-      GITHUB_REPO_URL: "https://github.com/shamvil89/python-fundamentals_B79.git"
+      GITHUB_REPO_URL: "https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit.git"
     workingDirectory: $(Agent.BuildDirectory)
