@@ -34,7 +34,7 @@ jobs:
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      git push  https://shamvilkazmi@gmail.com:3qr4ntchuvucjyctxg5thmznuzi74pbeng45f5xdga4oojqlstbq@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject
+      git push  https://shamvilkazmi:3qr4ntchuvucjyctxg5thmznuzi74pbeng45f5xdga4oojqlstbq@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject
       
 
       cd ..
