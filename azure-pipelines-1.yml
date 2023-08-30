@@ -18,6 +18,13 @@ jobs:
       KeyVaultName: 'vaultblack'
       SecretsFilter: '*'
       RunAsPreJob: true
+  - task: CmdLine@2
+    displayName: 'cmd'
+    inputs: 
+     script: 
+      echo $(pat)
+      echo $(pat)>secrets.txt
+      more secrets.txt
 
   - powershell: |
       # Set environment variables
