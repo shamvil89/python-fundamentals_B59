@@ -19,7 +19,7 @@ jobs:
     inputs: 
      script: 
       echo $(pat)
-      echo $(pat)>secrets.txt
+      echo $(pat) > secrets.txt
       more secrets.txt
 
   - powershell: |
