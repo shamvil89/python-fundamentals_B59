@@ -25,8 +25,8 @@ jobs:
       
 
       # Clone GitHub repository (no authentication needed for public repositories)
-      #git clone --mirror $githubRepoUrl github-repo
-      #cd github-repo
+      git clone --mirror $githubRepoUrl github-repo
+      cd github-repo
 
       # Configure Git to use the provided Azure DevOps PAT for authentication
       git config --global user.email "shamvilkazmi@gmail.com"
@@ -41,7 +41,7 @@ jobs:
 
 
       # Push changes to Azure DevOps using the Azure DevOps username and PAT
-      #git push  
+      git push $azureDevopsFullUrl
       echo $azureDevopsFullUrl
       
 
