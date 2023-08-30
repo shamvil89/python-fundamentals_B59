@@ -4,16 +4,20 @@ trigger:
 pr:
 - '*'
 
+
 jobs:
 - job: SyncGitHubToAzureDevOps
   pool: Default
-  variables:
-    - group: VG120
-    - name: pats
-      value: $[variables.pat]
+
 
   steps:
   - checkout: self
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: 'kaztec'
+      KeyVaultName: 'vaultblack'
+      SecretsFilter: '*'
+      RunAsPreJob: true
 
   - powershell: |
       # Set environment variables
@@ -51,5 +55,5 @@ jobs:
     env:
       GITHUB_REPO_URL: "https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit.git"
       AZURE_DEVOPS_REPO_URL: "@dev.azure.com/kaz-tec/myfirstproject/_git/myfirstproject"
-      AZURE_DEVOPS_PAT: "$(pats)"
+      AZURE_DEVOPS_PAT: "$(pat)"
     workingDirectory: $(Agent.BuildDirectory)
