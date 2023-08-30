@@ -8,9 +8,9 @@ jobs:
 - job: SyncGitHubToAzureDevOps
   pool: Default
   variables:
-    group:
-      name: pat
-      value: $[VG120.pat]
+    - group: VG120
+    - name: pat
+      value: $[variables.pat]
 
   steps:
   - checkout: self
